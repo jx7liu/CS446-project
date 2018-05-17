@@ -73,10 +73,14 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
                             System.out.println("left button clicked");
                             //model.characters.get(0).left-=10;
                             model.characters.get(0).thrustLeft();
+                            model.characters.get(0).state=2;
+                            return true;
                         }else if(ui.name=="RightButton"){
                             System.out.println("right button clicked");
                             //model.characters.get(0).left+=10;
                             model.characters.get(0).thrustRight();
+                            model.characters.get(0).state=1;
+                            return true;
                         }
                     }
                 }
@@ -88,9 +92,13 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
                     if(ui.name=="LeftButton"){
                         System.out.println("left button released");
                         model.characters.get(0).stopX();
+                        //model.characters.get(0).state=0;
+                        return true;
                     }else if(ui.name=="RightButton"){
                         System.out.println("right button released");
                         model.characters.get(0).stopX();
+                        //model.characters.get(0).state=0;
+                        return true;
                     }
                 }
 
@@ -103,6 +111,6 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
     }
 
     public void update(){
-
+        model.update();
     }
 }
